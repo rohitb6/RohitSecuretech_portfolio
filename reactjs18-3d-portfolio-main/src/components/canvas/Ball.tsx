@@ -10,8 +10,12 @@ import {
 
 import CanvasLoader from "../layout/Loader";
 
-const Ball = (props: any) => {
-  const [decal] = useTexture([props.imgUrl]);
+interface BallProps {
+  imgUrl: string;
+}
+
+const Ball: React.FC<BallProps> = ({ imgUrl }) => {
+  const [decal] = useTexture([imgUrl]);
 
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
@@ -30,7 +34,7 @@ const Ball = (props: any) => {
           rotation={[2 * Math.PI, 0, 6.25]}
           scale={1}
           map={decal}
-          // @ts-expect-error
+          // @ts-ignore - flatShading is a valid prop for Decal
           flatShading
         />
       </mesh>
@@ -49,7 +53,6 @@ const BallCanvas: React.FC<{ icon: string }> = ({ icon }) => {
         <OrbitControls enablePan={false} enableZoom={false} />
         <Ball imgUrl={icon} />
       </Suspense>
-
       <Preload all />
     </Canvas>
   );

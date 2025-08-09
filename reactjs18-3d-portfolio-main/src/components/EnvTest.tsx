@@ -1,6 +1,6 @@
-import React from 'react';
+import { FC } from 'react';
 
-const EnvTest = () => {
+const EnvTest: FC = () => {
   return (
     <div style={{ 
       position: 'fixed', 
@@ -18,7 +18,6 @@ const EnvTest = () => {
       <p>VITE_EMAILJS_SERVICE_ID: {import.meta.env.VITE_EMAILJS_SERVICE_ID ? '✅ Set' : '❌ Missing'}</p>
       <p>VITE_EMAILJS_TEMPLATE_ID: {import.meta.env.VITE_EMAILJS_TEMPLATE_ID ? '✅ Set' : '❌ Missing'}</p>
       <p>VITE_EMAILJS_ACCESS_TOKEN: {import.meta.env.VITE_EMAILJS_ACCESS_TOKEN ? '✅ Set' : '❌ Missing'}</p>
-      <p><small>Note: This is only visible in development</small></p>
     </div>
   );
 };

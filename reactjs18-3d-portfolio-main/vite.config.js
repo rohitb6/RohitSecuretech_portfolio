@@ -17,5 +17,16 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    chunkSizeWarningLimit: 1000, // Increase chunk size warning limit
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'three'], // Split vendor chunks
+        },
+      },
+    },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'three'],
   },
 });
